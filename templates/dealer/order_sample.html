@@ -1,0 +1,552 @@
+{% extends "dealer/dashboard_sample.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+  
+    
+
+ 
+<!-- content-wrapper ends -->
+<div class="col-xl-12" style="background-color: white;">
+  <div class="panel panel-flat dashboard-main-col mt-4">
+    <div class="panel-heading">
+      <h4 class="panel-title pl-3 pt-3"><strong>Today New Orders</strong></h4>
+      <hr>
+    </div>
+    <div id="newOrdersTable" class="table-responsive ">
+      <table class="table text-nowrap">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Address</th>
+            <th>Order Date</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Items</th>
+            <th>Order Status</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for orders in order %}
+          {% if orders.order_status == "Pending" and orders.date_ordered == today %}
+          <tr>
+           
+            <td>
+              {{orders.transaction_id}}
+            </td>
+            <td>
+              {{orders.customer.name}}
+            </td>
+              <td>
+
+              </td>
+            <td>
+              {{orders.date_ordered}}
+            </td>
+            <td>
+              <span class="text-semibold no-margin">₹
+                {{orders.product_total}}</span>
+            </td>
+            {% for i in orders.shippingadress_set.all %}
+              {% if i.payment_status == null %}
+              <td>{{i.payment_cod}}</td>
+
+              {% else %}
+              <td>{{i.payment_status}}</td>
+              {% endif %}
+              {% endfor %}
+            <td>
+              <!-- Button to Open the Modal -->
+              <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                data-target="#{{orders.customer.name}}">
+                Items
+              </button>
+
+
+              <!-- The Modal -->
+              <div class="modal" id="{{orders.customer.name}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Item Listing</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Item name</th>
+                            <th>Price</th>
+                            <th>catogery</th>
+                            <th>Total price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in orders.orderitem_set.all %}
+                          <tr>
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.product.newprice}}</td>
+                            <td>{{item.product.product_category}}</td>
+                            <td>asdfas</td>
+                          </tr>
+                          {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+    </div>
+
+    </td>
+    <td>
+      <button type="button" data-id="{{orders.id}}" data-status="Accept"
+        class="btn btn-default btn-sm change_status">Accept <i class="far fa-check-circle"></i></button>
+      <button type="button" data-id="{{orders.id}}" data-status="Reject"
+        class="btn btn-danger btn-sm change_status">Reject <i class="fas fa-times"></i></button>
+    </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<!-- partial:../../partials/_footer.html -->
+
+<!-- content-wrapper ends -->
+<div class="col-xl-12" style="background-color: white;">
+  <div class="panel panel-flat dashboard-main-col mt-4">
+    <div class="panel-heading">
+      <h4 class="panel-title pl-3 pt-3"><strong>Packing Orders</strong></h4>
+      <hr>
+    </div>
+    <div id="newOrdersTable" class="table-responsive ">
+      <table class="table text-nowrap">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Address</th>
+            <th>Order Date</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Items</th>
+            <th>Order Status</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for orders in order %}
+          {% if orders.order_status == "Accept" %}
+          <tr>
+
+            <td>
+              {{orders.transaction_id}}
+            </td>
+            <td>
+              {{orders.customer.name}}
+            </td>
+              <td>
+
+              </td>
+            <td>
+              {{orders.date_ordered}}
+            </td>
+            <td>
+              <span class="text-semibold no-margin">₹
+                {{orders.product_total}}</span>
+            </td>
+            {% for i in orders.shippingadress_set.all %}
+              {% if i.payment_status == null %}
+              <td>{{i.payment_cod}}</td>
+
+              {% else %}
+              <td>{{i.payment_status}}</td>
+              {% endif %}
+              {% endfor %}
+            <td>
+              <!-- Button to Open the Modal -->
+              <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                data-target="#{{orders.customer.name}}">
+                View Items
+              </button>
+
+
+              <!-- The Modal -->
+              <div class="modal" id="{{orders.customer.name}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Item Listing</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Item name</th>
+                            <th>Price</th>
+                            <th>catogery</th>
+                            <th>Total price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in orders.orderitem_set.all %}
+                          <tr>
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.product.newprice}}</td>
+                            <td>{{item.product.product_category}}</td>
+                            <td>asdfas</td>
+                          </tr>
+                          {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+    </div>
+
+    </td>
+    <td>
+      <button type="button" data-id="{{orders.id}}" data-status="Packed"
+      class="btn btn-default btn-sm change_status">Packed... <i class="far fa-check-circle"></i></button>
+    </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<!-- partial:../../partials/_footer.html -->
+<!-- content-wrapper ends -->
+<div class="col-xl-12" style="background-color: white;">
+  <div class="panel panel-flat dashboard-main-col mt-4">
+    <div class="panel-heading">
+      <h4 class="panel-title pl-3 pt-3"><strong>Delivering Orders</strong></h4>
+      <hr>
+    </div>
+    <div id="newOrdersTable" class="table-responsive ">
+      <table class="table text-nowrap">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Address</th>
+            <th>Order Date</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th >Items</th>
+            <th >Order Status</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for orders in order %}
+          {% if orders.order_status == "Packed" %}
+          <tr>
+            <td>
+              {{orders.transaction_id}}
+            </td>
+            <td>
+              {{orders.customer.name}}
+            </td>
+              <td>
+
+              </td>
+            <td>
+              {{orders.date_ordered}}
+            </td>
+            <td>
+              <span class="text-semibold no-margin">₹
+                {{orders.product_total}}</span>
+            </td>
+            {% for i in orders.shippingadress_set.all %}
+              {% if i.payment_status == null %}
+              <td>{{i.payment_cod}}</td>
+
+              {% else %}
+              <td>{{i.payment_status}}</td>
+              {% endif %}
+              {% endfor %}
+            <td>
+              <!-- Button to Open the Modal -->
+              <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                data-target="#{{orders.customer.name}}">
+                View Items
+              </button>
+
+
+              <!-- The Modal -->
+              <div class="modal" id="{{orders.customer.name}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Item Listing</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Item name</th>
+                            <th>Price</th>
+                            <th>catogery</th>
+                            <th>Total price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in orders.orderitem_set.all %}
+                          <tr>
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.product.newprice}}</td>
+                            <td>{{item.product.product_category}}</td>
+                            <td>asdfas</td>
+                          </tr>
+                          {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+    </div>
+
+    </td>
+    <td>
+      <button type="button" data-id="{{orders.id}}" data-status="Deliverd"
+      class="btn btn-default btn-sm change_status">Deliverd <i class="far fa-check-circle"></i></button>
+    </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<!-- partial:../../partials/_footer.html -->
+<!-- content-wrapper ends -->
+<div class="col-xl-12" style="background-color: white;">
+  <div class="panel panel-flat dashboard-main-col mt-4">
+    <div class="panel-heading">
+      <h4 class="panel-title pl-3 pt-3"><strong>Previous Orders</strong></h4>
+      <hr>
+    </div>
+    <div id="newOrdersTable" class="table-responsive ">
+      <table class="table text-nowrap">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Address</th>
+            <th>Order Date</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Items</th>
+            <th>Order Status</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for orders in order %}
+          {% if orders.order_status == "Pending" and orders.date_ordered != today %}
+          <tr>
+           
+            <td>
+              {{orders.transaction_id}}
+            </td>
+            <td>
+              {{orders.customer.name}}
+            </td>
+              <td>
+
+              </td>
+            <td>
+              {{orders.date_ordered}}
+            </td>
+            <td>
+              <span class="text-semibold no-margin">₹
+                {{orders.product_total}}</span>
+            </td>
+            {% for i in orders.shippingadress_set.all %}
+              {% if i.payment_status == null %}
+              <td>{{i.payment_cod}}</td>
+
+              {% else %}
+              <td>{{i.payment_status}}</td>
+              {% endif %}
+              {% endfor %}
+            <td>
+              <!-- Button to Open the Modal -->
+              <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                data-target="#{{orders.customer.name}}">
+                Items
+              </button>
+
+
+              <!-- The Modal -->
+              <div class="modal" id="{{orders.customer.name}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Item Listing</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Item name</th>
+                            <th>Price</th>
+                            <th>catogery</th>
+                            <th>Total price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in orders.orderitem_set.all %}
+                          <tr>
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.product.newprice}}</td>
+                            <td>{{item.product.product_category}}</td>
+                            <td>asdfas</td>
+                          </tr>
+                          {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+    </div>
+
+    </td>
+    <td>
+      <button type="button" data-id="{{orders.id}}" data-status="Accept"
+        class="btn btn-default btn-sm change_status">Accept <i class="far fa-check-circle"></i></button>
+      <button type="button" data-id="{{orders.id}}" data-status="Reject"
+        class="btn btn-danger btn-sm change_status">Reject <i class="fas fa-times"></i></button>
+    </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<!-- partial:../../partials/_footer.html -->
+
+</div>
+</div>
+
+<script>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  /*var btn = document.getElementById('order_status1')
+  btn.addEventListener('click',function(){
+      alert('ok')
+      var top = document.getElementById('actual_status')
+      top.innerHTML = 'changed'
+  })*/
+
+  var statusBtns = document.getElementsByClassName('change_status')
+
+  for (var i = 0; i < statusBtns.length; i++) {
+    statusBtns[i].addEventListener('click', function () {
+      console.log('value of I:', i)
+      var orderId = this.dataset.id
+      var status = this.dataset.status
+      console.log('orderId:', orderId, 'status :', status)
+      var top = document.getElementsByClassName('actual_status')
+      top.innerHTML = status
+      //location.reload()
+      $.ajax({
+        url: 'update_order/',
+        type: 'POST',
+        data: {
+          order_id: orderId,
+          order_status: status,
+          csrfmiddlewaretoken: csrftoken
+        },
+          success: function(result){
+          location.reload()
+          }
+      });
+    })
+  }
+</script>
+
+
+
+{% endblock %}

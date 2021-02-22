@@ -1,0 +1,724 @@
+{% extends "index.html" %}
+{% block content %}
+{% load static %}
+
+
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Checkout</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-7">
+						<div id="checkout_wizard" class="checkout accordion left-chck145">
+							<!-- <div class="checkout-step">
+								<div class="checkout-card" id="headingOne"> 
+									<span class="checkout-step-number">1</span>
+									<h4 class="checkout-step-title"> 
+										<button class="wizard-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Phone Number Verification</button>
+									</h4>
+								</div>
+								<div id="collapseOne" class="collapse in show" data-parent="#checkout_wizard">
+									<div class="checkout-step-body">
+										<p>We need your phone number so we can inform you about any delay or problem.</p>	
+										<p class="phn145">4 digits code send your phone <span>+918437176189</span><a class="edit-no-btn hover-btn" data-toggle="collapse" href="#edit-number">Edit</a></p>
+										<div class="collapse" id="edit-number">
+											<div class="row">
+												<div class="col-lg-8">
+													<div class="checkout-login">
+														<form>
+															<div class="login-phone">
+																<input type="text" class="form-control" placeholder="Phone Number">
+															</div>
+															<a class="chck-btn hover-btn" role="button" data-toggle="collapse" href="#otp-verifaction" >Send Code</a>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="otp-verifaction">
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="form-group mb-0">
+														<label class="control-label">Enter Code</label>
+														<ul class="code-alrt-inputs">
+															<li>
+																<input id="code[1]" name="number" type="text" placeholder="" class="form-control input-md" required="">
+															</li>
+															<li>
+																<input id="code[2]" name="number" type="text" placeholder="" class="form-control input-md" required="">
+															</li>
+															<li>
+																<input id="code[3]" name="number" type="text" placeholder="" class="form-control input-md" required="">
+															</li>
+															<li>
+																<input id="code[4]" name="number" type="text" placeholder="" class="form-control input-md" required="">
+															</li>
+															<li>
+																<a class="collapsed chck-btn hover-btn" role="button" data-toggle="collapse" data-parent="#checkout_wizard" href="#collapseTwo">Next</a>
+															</li>
+														</ul>
+														<a href="#" class="resend-link">Resend Code</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+							<div  class="checkout-step">
+								<div class="checkout-card" id="headingTwo">
+									<span class="checkout-step-number">1</span>
+									<h4 class="checkout-step-title">
+										<button class="wizard-btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Delivery Address</button>
+									</h4>
+								</div>
+								<div >
+									<div class="checkout-step-body">
+										<div class="checout-address-step">
+											<div id = "shipping-info" class="row">
+												<div class="col-lg-12">												
+													<form id="forms" class="forms">
+														<!-- Multiple Radios (inline) -->
+														<div class="form-group">
+															<div class="product-radio">
+																<ul class="product-now">
+																	<!-- <li>
+																		<input type="radio" id="ad1" name="address1" checked>
+																		<label for="ad1">Home</label>
+																	</li>
+																	<li>
+																		<input type="radio" id="ad2" name="address1">
+																		<label for="ad2">Office</label>
+																	</li>
+																	<li>
+																		<input type="radio" id="ad3" name="address1">
+																		<label for="ad3">Other</label>
+																	</li> -->
+																</ul>
+															</div>
+														</div>
+														<div  class="address-fieldset">
+															<div class="row">
+                                                                <div id="user-info">
+																<div class="col-lg-6 col-md-12">
+																	<div class="form-group">
+																		<label class="control-label">Name*</label>
+																		<input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+																	</div>
+																</div>
+																<div class="col-lg-6 col-md-12">
+																	<div class="form-group">
+																		<label class="control-label">Email Address*</label>
+																		<input id="email1" name="email1" type="text" placeholder="Email Address" class="form-control input-md" required="">
+																	</div>
+                                                                </div>
+                                                            </div>
+																<div class="col-lg-12 col-md-12">
+																	<div class="form-group">
+																		<label class="control-label">Flat / House / Office No.*</label>
+																		<input id="add1" name="address" required type="text" placeholder="Address" class="form-control input-md" required="">
+																	</div>
+																</div>
+																<div class="col-lg-6 col-md-12">
+																	<div class="form-group">
+																		<label class="control-label">city*</label>
+																		<input id="city" name="city" required type="text" placeholder="Street Address" class="form-control input-md">
+																	</div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-12">
+																	<div class="form-group">
+																		<label class="control-label">State*</label>
+																		<input id="stat" name="state" type="text" required placeholder="Street Address" class="form-control input-md">
+																	</div>
+																</div>
+																<div class="col-lg-6 col-md-12">
+																	<div class="form-group">
+																		<label class="control-label">Pincode*</label>
+																		<input id="zip" name="pincode" type="text" required placeholder="Pincode" class="form-control input-md" required="">
+																	</div>
+																</div>
+																<div class="col-lg-6 col-md-12">
+																	<div class="form-group">
+																		<label class="control-label">Country*</label>
+																		<input id="country" name="country" required type="text" placeholder="Enter City" class="form-control input-md" required="">
+																	</div>
+																</div>
+																<div class="col-lg-12 col-md-12">
+																	<div class="form-group">
+																		<div class="address-btns">
+																			<input type="submit" id = "form-button" class="save-btn14 hover-btn collapsed next-btn16 hover-btn"  data-toggle="collapse"  href="#collapseFour" value="Save">
+																			
+                                                                        </div>
+                                                                      
+																	</div>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+												{% for shi in shipping %}
+									<div class="col-md-4">
+										<div class="card text-center card-product"
+											style="background-color:rgba(0, 0, 255, 0.1);; color: black;">
+											<div class="card-body" style="color: black;">
+												<h6 id="addd1" data-mo="{{shi.address}}" style="padding-top: 20px;">{{shi.address}}</h6>
+												<p id="addd2">{{shi.city}}</p>
+												<p id="addd3">{{shi.state}}</p>
+												<p id="addd4">{{shi.zipcode}}</p>
+												<p id="addd5">{{shi.country}}</p>
+												<input id="myCheck" name="{{shi.id}}" type="checkbox">
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="checkout-step">
+								<div class="checkout-card" id="headingThree"> 
+									<span class="checkout-step-number">3</span>
+									<h4 class="checkout-step-title">
+										<button class="wizard-btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Delivery Time & Date </button>
+									</h4>
+								</div>
+								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#checkout_wizard">
+									<div class="checkout-step-body">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="control-label">Select Date and Time*</label>
+													<div class="date-slider-group">
+														<div class="owl-carousel date-slider owl-theme">
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd1" name="address1" checked="">
+																	<label for="dd1">Today</label>
+																</div>
+															</div>
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd2" name="address1">
+																	<label for="dd2">Tomorrow</label>
+																</div>
+															</div>
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd3" name="address1">
+																	<label for="dd3">10 May 2020</label>
+																</div>
+															</div>
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd4" name="address1">
+																	<label for="dd4">11 May 2020</label>
+																</div>
+															</div>
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd5" name="address1">
+																	<label for="dd5">12 May 2020</label>
+																</div>
+															</div>
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd6" name="address1">
+																	<label for="dd6">13 May 2020</label>
+																</div>
+															</div>
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd7" name="address1">
+																	<label for="dd7">14 May 2020</label>
+																</div>
+															</div>
+															<div class="item">
+																<div class="date-now">
+																	<input type="radio" id="dd8" name="address1">
+																	<label for="dd8">15 May 2020</label>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="time-radio">
+														<div class="ui form">
+															<div class="grouped fields">
+																<div class="field">
+																	<div class="ui radio checkbox chck-rdio">
+																		<input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+																		<label>8.00AM - 10.00AM</label>
+																	</div>
+																</div>
+																<div class="field">
+																	<div class="ui radio checkbox chck-rdio">
+																		<input type="radio" name="fruit" tabindex="0" class="hidden">
+																		<label>10.00AM - 12.00PM</label>
+																	</div>
+																</div>
+																<div class="field">
+																	<div class="ui radio checkbox chck-rdio">
+																		<input type="radio" name="fruit" tabindex="0" class="hidden">
+																		<label>12.00PM - 2.00PM</label>
+																	</div>
+																</div>
+																<div class="field">
+																	<div class="ui radio checkbox chck-rdio">
+																		<input type="radio" name="fruit" tabindex="0" class="hidden">
+																		<label>2.00PM - 4.00PM</label>
+																	</div>
+																</div>
+																<div class="field">
+																	<div class="ui radio checkbox chck-rdio">
+																		<input type="radio" name="fruit" tabindex="0" class="hidden">
+																		<label>4.00PM - 6.00PM</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<a class="collapsed next-btn16 hover-btn" role="button" data-toggle="collapse"  href="#collapseFour"> Proccess to payment </a>
+									</div>
+								</div>
+							</div> -->
+							<div class="checkout-step ">
+								<div id="payment" class="row invisible">
+								<div class="checkout-card" id="headingFour">
+									<span class="checkout-step-number">2</span>
+									<h4 class="checkout-step-title"> 
+										<button class="wizard-btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Payment</button>
+									</h4>
+								</div>
+								<div >
+									<div class="checkout-step-body">
+										<div class="payment_method-checkout">	
+												
+												<div class="col-md-12">
+													<div class="rpt100">													
+														<ul class="radio--group-inline-container_1">
+															<li>
+																<div class="radio-item_1">
+																	<input id="cashondelivery1" value="cashondelivery" name="paymentmethod" type="radio" data-minimum="50.0">
+																	<label for="cashondelivery1" class="radio-label_1">Cash on Delivery</label>
+																</div>
+															</li>
+															<li>
+																<div class="radio-item_1">
+																	<input id="card1" value="card" name="paymentmethod" type="radio" data-minimum="50.0">
+																	<label  for="card1" class="radio-label_1">Credit / Debit Card</label>
+																</div>
+															</li>
+														</ul>
+													</div>
+													<div class="form-group return-departure-dts" data-method="cashondelivery">															
+														<div class="row">
+															<div class="col-lg-12">
+																<div class="pymnt_title">
+																	<h4>Cash on Delivery</h4>
+																	<p>Cash on Delivery will not be available if your order value exceeds $10.</p>
+																</div>
+																<div style="padding-left: 40%;">
+																	<a  id='make-payment' class="next-btn16 hover-btn">Place Order</a>
+																</div>
+															</div>														
+														</div>
+													</div>
+													<div class="form-group return-departure-dts" data-method="card">															
+														<div class="row">
+															<div class="col-lg-12">
+																<div class="pymnt_title mb-4">
+																	<h4>Paypal options</h4>
+																</div>
+															</div>														
+															<div style="width: 100%;"  id="paypal-button-container"></div>
+															<button id="rzp-button1" class="btn btn-danger" style="width:100%" >Pay with Razorpay</button>
+															<a href="/payment/" style="width: 100%;" ><button id="paytm" class="btn btn-primary" style="width:100%" >Paytm karo</button></a>
+														</div>
+													</div>
+													
+													
+												</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-5">
+						<div class="pdpt-bg mt-0">
+							<div class="pdpt-title">
+								<h4>Order Summary</h4>
+							</div>
+							<div class="right-cart-dt-body">
+                                {% if user.is_authenticated %}
+				                {% for item in items %}
+								<div class="cart-item border_radius">
+									<div class="cart-product-img">
+										<img src="" alt="">
+										<div class="offer-badge">4% OFF</div>
+									</div>
+									<div class="cart-text">
+										<h4>{{item.product.name}}</h4>
+										<div class="cart-item-price"><i class="fas fa-rupee-sign"></i> {{item.product.newprice}} <h5 style="padding-left: 100px;"><i class="fas fa-rupee-sign"></i> {{item.get_total}}</h3></div>
+			
+									</div>		
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <img style="padding-left: px;"  width="390px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1JmJQQP996cQ_aGG6Mb9tAt2kaQQW9a3VLw&usqp=CAU" alt="">
+                                <h1 style="padding-left: 80px; padding-bottom: 30px; color: grey; text-transform: uppercase;">cart is empty</h1>
+                                {% endif %}
+							</div>
+							<div class="total-checkout-group">
+								<!-- <div class="cart-total-dil">
+									<h4>Gambo Super Market</h4>
+									<span>$15</span>
+								</div>
+								<div class="cart-total-dil pt-3">
+									<h4>Delivery Charges</h4>
+									<span>$1</span>
+								</div>
+							</div> -->
+							
+							<div class="cart-total-dil saving-total ">
+								<h4>Total Items</h4>
+								<span>{{order.get_cart_items}}</span>
+							</div>
+							{% if change > 0 %}
+							<div class="cart-total-dil saving-total ">
+								<h4>Item Total</h4>
+								<span>{{order.get_cart_total}}</span>
+							</div>
+							<div class="cart-total-dil saving-total ">
+								<h4>Refral Discount amount</h4>
+								<span>10 %</span>
+							</div>
+							{% endif %}
+							{% if change > 0 %}
+							<div class="main-total-cart">
+								<h2>Total amount</h2>
+								<span><i class="fas fa-rupee-sign"></i></span><span id="entry-title">{{change}}</span>
+							</div>
+							{% else %}
+							<div class="main-total-cart">
+								<h2>Total</h2>
+								<span>${{order.get_cart_total}}</span>
+							</div>
+							{% endif %}
+						</div>
+						<div class="checkout-safety-alerts">
+							<p><i class="uil uil-sync"></i>100% Replacement Guarantee</p>
+							<p><i class="uil uil-check-square"></i>100% Genuine Products</p>
+							<p><i class="uil uil-shield-check"></i>Secure Payments</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<!-- Body End -->
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script>
+		var con = "{{order.get_cart_total|floatformat:2}}"/74.072 ;
+		var payment_raz='razorpay'
+		var total = con ;
+		var options = {
+			"key": "rzp_test_BIydmFasQhZv1U",
+			"amount": total, 
+			"currency": "USD",
+			"name": "Acme Corp",
+			"description": "Test Transaction",
+			"image": "",
+			"order_id": '{{order_id}}',
+			"handler": function (response){
+			
+				submitFormData(payment_raz)
+			},
+			
+			"prefill": {
+				
+				"name": "{{user.username}}",
+				"email": "{{user.email}}",
+				"contact": "{{user.last_name}}"
+			},
+			"notes": {
+				"address": "Razorpay Corporate Office"
+			},
+			"theme": {
+				"color": "#F37254"
+			}
+		};
+		var rzp1 = new Razorpay(options);
+		document.getElementById('rzp-button1').onclick = function(e){
+			rzp1.open();
+			e.preventDefault();
+		}
+		
+	</script>
+	<script src="https://www.paypal.com/sdk/js?client-id=AU7YnLZcEhUPluDcNYwAJ0rEk-xA4doYCu7JC3sOEkuVTYgg-38ep0NE0rRUISMR-sdRCJT6B73MxHd7&currency=USD"></script>
+	<script>
+		
+		 var change = document.querySelector("#entry-title")
+		 var payment_paypal='paypal'
+		if(change){
+			change.textContent > 0
+			totalss = ("{{order.get_cart_total}}"/74.0742)*(90/100)
+
+		}else {
+			
+			totalss = '{{order.get_cart_total}}'/74.0742
+
+		}
+		
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+
+			style:{
+				color:'blue',
+				shape:'rect',
+			},
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: parseFloat(totalss).toFixed(2)
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+					submitFormData(payment_paypal)
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+<script type="text/javascript">
+
+    var shipping = '{{order.shipping}}'
+    var total = '{{order.get_cart_total}}'
+
+    if (shipping == 'False'){
+        document.getElementById('shipping-info').innerHTML = ''
+    }
+
+    if (user != 'AnonymousUser'){
+        document.getElementById('user-info').innerHTML = ''
+    }
+
+    if (shipping == 'False' && user != 'AnonymousUser'){
+        document.getElementById('form-wrapper').classList.add('invisible')
+        document.getElementById('payment').classList.remove('invisible')
+    }
+ 
+
+
+
+    var form = document.getElementById('forms')
+
+    form.addEventListener('submit',function (e){
+
+        e.preventDefault()
+        console.log('form submitted...')
+        document.getElementById('form-button').classList.add('invisible')
+        document.getElementById('payment').classList.remove('invisible')
+        
+    })
+
+    document.getElementById('make-payment').addEventListener('click',
+			
+			function submitFormCod(){
+
+				console.log('Cod button clicked')
+
+        var userFormData = {
+            'name': null,
+            'email': null,
+            'total': total,
+        }
+        var shippingInfo = {
+            'address': null,
+            'city': null,
+            'state': null,
+            'pincode': null,
+            'country': null,
+			'payment_cod':null,
+        } 
+
+        if (shipping != 'False'){
+            shippingInfo.address = form.address.value
+            shippingInfo.city = form.city.value
+            shippingInfo.state = form.state.value
+            shippingInfo.pincode = form.pincode.value
+            shippingInfo.country = form.country.value
+			shippingInfo.payment_cod = payment_cod = 'cash'
+        } 
+        if (user == 'Anonymoususer'){
+            userFormData.name = form.name.value
+            userFormData.email = form.email.value
+
+           
+        }
+        
+        var url = '/cod/'
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'X-CSRFToken':csrftoken,
+
+            },
+            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo})
+
+        })
+        .then((response) => response.json())
+        .then((data) =>{
+            console.log('success:',data);
+            alert('Cod Transaction completed');
+            window.location.href = "{% url 'order_completed'%}"
+
+        })       
+        
+	})
+	document.getElementById('paytm').addEventListener('click',function(e){
+
+		submitFormData()
+
+})
+	
+	
+
+    function submitFormData(payment_status) {
+        console.log('payment button clicked')
+
+        var userFormData = {
+            'name': null,
+            'email': null,
+            'total': total,
+        }
+        var shippingInfo = {
+            'address': null,
+            'city': null,
+            'state': null,
+            'pincode': null,
+            'country': null,
+			'payment_status':null,
+        } 
+
+        if (shipping != 'False'){
+            shippingInfo.address = form.address.value
+            shippingInfo.city = form.city.value
+            shippingInfo.state = form.state.value
+            shippingInfo.pincode = form.pincode.value
+            shippingInfo.country = form.country.value
+			shippingInfo.payment_status = payment_status
+        } 
+        if (user == 'Anonymoususer'){
+            userFormData.name = form.name.value
+            userFormData.email = form.email.value
+
+           
+        }
+        
+        var url = '/process_order/'
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'X-CSRFToken':csrftoken,
+
+            },
+            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo})
+
+        })
+        .then((response) => response.json())
+        .then((data) =>{
+            console.log('success:',data);
+            alert('Transation Completed');
+            window.location.href = "{% url 'index'%}"
+
+        })
+    }
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const a1 = document.querySelectorAll('#addd1')
+        var yyy = document.querySelectorAll("#myCheck")
+        // 
+        console.log(a1)
+        console.log(yyy);
+        yyy.forEach((dd) => {
+            const sss = dd.name
+            console.log(sss);
+
+            $(dd).change(function () {
+                if (dd.checked == true) {
+                    console.log("error")
+                    console.log(dd.name)
+
+                    $.ajax({
+                        url: '/getshipping/',
+                        type: 'GET',
+                        data: {
+                            ship_id: dd.name
+                        },
+                        success: function (response) {
+                            console.log(response.count2.address)
+                            console.log(response.count2.city)
+                            console.log(response.count2.state)
+                            console.log(response.count2.zipcode)
+							console.log(response.count2.country)
+
+
+                            $("#add1").val(response.count2.address)
+                            $("#city").val(response.count2.city)
+                            $("#stat").val(response.count2.state)
+                            $("#zip").val(response.count2.zipcode)
+                            $("#country").val(response.count2.country)
+
+                        }
+                    });
+                } else {
+                    $("#add1").val("")
+                    $("#city").val("")
+                    $("#stat").val("")
+                    $("#zip").val("")
+                    $("#country").val("")
+
+                }
+            })
+            // console.log(yyy)
+        })
+    })
+</script>
+
+
+{% endblock content %}

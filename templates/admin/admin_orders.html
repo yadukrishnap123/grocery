@@ -1,0 +1,125 @@
+{% extends "admin/base.html" %}
+{% block content %}
+{% load static %}
+
+
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+          <div class="header-body">
+            <div class="row align-items-center py-4">
+              <div class="col-lg-6 col-7">
+                <h6 class="h2 text-white d-inline-block mb-0">Orders</h6>
+                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                  <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="col-lg-6 col-5 text-right">
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page content -->
+      <div class="container-fluid mt--6">
+        <!-- Dark table -->
+        <div class="row">
+          <div class="col">
+            <div class="card bg-default shadow">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="text-white mb-0">All Orders</h3>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-items-center table-dark table-flush">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" class="sort" data-sort="name">Customer</th>
+                      <th scope="col" class="sort" data-sort="budget">Dealer</th>
+                      <th scope="col" class="sort" data-sort="budget">Total Price</th>
+                      <th scope="col" class="sort" data-sort="status">Status</th>
+                      <th scope="col">Date Orderd</th>
+                      <th scope="col" class="sort" data-sort="completion">Payment</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="list">
+                      {% for orders in order %}
+                      {% if orders.dealer %}
+                    <tr>
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <!-- <a href="#" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                          </a> -->
+                          <div class="media-body">
+                            <span class="name mb-0 text-sm">{{orders.customer.name}}</span>
+                          </div>
+                        </div>
+                      </th>
+                    
+                      <td >
+                        <div class="media align-items-center">
+                            <!-- <a href="#" class="avatar rounded-circle mr-3">
+                              <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                            </a> -->
+                            <div class="media-body">
+                              <span class="name mb-0 text-sm">{{orders.dealer.shop_name}}</span>
+                            </div>
+                          </div>
+                      </td>
+                      <td class="budget">
+                        <i class="fas fa-rupee-sign"></i> {{orders.product_total}} INR
+                      </td>
+                      <td>
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-success"></i>
+                          <span class="status">{{orders.order_status}}</span>
+                        </span>
+                      </td>
+                      <td >
+                        <div class="media align-items-center">
+                            <!-- <a href="#" class="avatar rounded-circle mr-3">
+                              <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                            </a> -->
+                            <div class="media-body">
+                              <span class="name mb-0 text-sm">{{orders.date_ordered}}</span>
+                            </div>
+                          </div>
+                      </td>
+                        {% for i in orders.shippingadress_set.all %}
+                        
+              {% if i.payment_status == null %}
+              <td class="text-center">{{i.payment_cod}}</td>
+
+              {% elif i.payment_status != null   %}
+              <td class="text-center">{{i.payment_status}}</td>
+              {% endif %}
+              {% endfor %}
+                      
+                      <td class="text-right">
+                        <a type="button" href="{% url 'order_view' orders.id%}" class="btn btn-primary">Order View</a>
+                      </td>
+                    </tr>
+                    {%else%}
+                    {%endif%}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Footer -->
+
+
+
+
+
+{% endblock content %}
