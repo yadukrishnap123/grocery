@@ -412,16 +412,10 @@ def checkout(request):
         print("tttt",totals)
         cartItems = order.get_cart_items
         print(items)
-        client  = razorpay.Client(auth=("rzp_test_BIydmFasQhZv1U", "vu8l6padL6tNMOQlwCYm1Q4z"))
+        # client  = razorpay.Client(auth=("rzp_test_BIydmFasQhZv1U", "vu8l6padL6tNMOQlwCYm1Q4z"))
         if request.user.is_authenticated:
-            if customer.refferd_user and Order.objects.filter(customer=customer, complete=True).count() < 1 :
-                ch = order.get_cart_total
-                changes = (order.get_cart_total)*(90/100)
-                print("ff",changes)
-                totals = round(changes)
-                total = int((totals*100)/74.0742)
-            else:    
-                total = int((order.get_cart_total*100)/74.0742)
+              
+            total = int((order.get_cart_total*100)/74.0742)
         else:
             total = int((order['get_cart_total']*100)/74.0742)
         
@@ -431,13 +425,13 @@ def checkout(request):
         if order_amount == 0:
             return redirect('checkout')
         else:
-            response = client.order.create(dict(amount=order_amount, currency=order_currency, payment_capture = 0) )
+            # response = client.order.create(dict(amount=order_amount, currency=order_currency, payment_capture = 0) )
                 
 
             
-            order_id = response['id']
-            # context = {'items': items, 'order':order, 'cartItems':cartItems, 'order_id':order_id,'c':countries}
-            # return render(request, 'checkout.html', context)
+            # order_id = response['id']
+            context = {'items': items, 'order':order, 'item_count':item_count}
+            return render(request, 'checkout.html', context)
 
     else:
         items = []  
